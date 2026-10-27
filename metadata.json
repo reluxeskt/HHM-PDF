@@ -1,0 +1,6 @@
+{
+  "name": "HHM PDF",
+  "description": "Professional PDF editor with page organization, text and image editing, annotations, forms, digital signatures, redaction, watermarks, and conversion.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

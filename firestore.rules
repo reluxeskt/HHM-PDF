@@ -1,0 +1,128 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Global Safety Net: Default-deny catch-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    // Entity Validators
+    function isValidUser(data) {
+      return data.keys().hasAll(['uid', 'email', 'createdAt', 'updatedAt'])
+        && data.keys().hasOnly(['uid', 'email', 'displayName', 'photoURL', 'storageUsedBytes', 'storageQuotaBytes', 'createdAt', 'updatedAt'])
+        && data.uid is string && data.uid.size() <= 128
+        && data.email is string && data.email.size() <= 256
+        && (!('displayName' in data) || (data.displayName is string && data.displayName.size() <= 100))
+        && (!('photoURL' in data) || (data.photoURL is string && data.photoURL.size() <= 1024))
+        && (!('storageUsedBytes' in data) || data.storageUsedBytes is number)
+        && (!('storageQuotaBytes' in data) || data.storageQuotaBytes is number);
+    }
+
+    function isValidFolder(data, userId) {
+      return data.keys().hasAll(['id', 'userId', 'name', 'createdAt', 'updatedAt'])
+        && data.keys().hasOnly(['id', 'userId', 'name', 'color', 'createdAt', 'updatedAt'])
+        && data.id is string && isValidId(data.id)
+        && data.userId == userId
+        && data.name is string && data.name.size() > 0 && data.name.size() <= 128
+        && (!('color' in data) || (data.color is string && data.color.size() <= 32));
+    }
+
+    function isValidDocument(data, userId) {
+      return data.keys().hasAll(['id', 'userId', 'name', 'sizeBytes', 'pageCount', 'storagePath', 'version', 'createdAt', 'updatedAt'])
+        && data.keys().hasOnly(['id', 'userId', 'folderId', 'name', 'sizeBytes', 'pageCount', 'storagePath', 'downloadUrl', 'version', 'isEncrypted', 'isSigned', 'tags', 'lastModifiedBy', 'createdAt', 'updatedAt'])
+        && data.id is string && isValidId(data.id)
+        && data.userId == userId
+        && data.name is string && data.name.size() > 0 && data.name.size() <= 256
+        && data.sizeBytes is number && data.sizeBytes >= 0 && data.sizeBytes <= 26214400 // max 25MB
+        && data.pageCount is number && data.pageCount >= 0
+        && data.storagePath is string && data.storagePath.size() <= 512
+        && data.version is number && data.version >= 1
+        && (!('folderId' in data) || (data.folderId is string && data.folderId.size() <= 128))
+        && (!('downloadUrl' in data) || (data.downloadUrl is string && data.downloadUrl.size() <= 2048))
+        && (!('isEncrypted' in data) || data.isEncrypted is bool)
+        && (!('isSigned' in data) || data.isSigned is bool)
+        && (!('tags' in data) || (data.tags is string && data.tags.size() <= 500))
+        && (!('lastModifiedBy' in data) || (data.lastModifiedBy is string && data.lastModifiedBy.size() <= 128));
+    }
+
+    function isValidRecent(data, userId) {
+      return data.keys().hasAll(['id', 'userId', 'name', 'lastOpened', 'platform'])
+        && data.keys().hasOnly(['id', 'userId', 'documentId', 'name', 'pageCount', 'sizeBytes', 'lastOpened', 'platform'])
+        && data.id is string && isValidId(data.id)
+        && data.userId == userId
+        && data.name is string && data.name.size() > 0 && data.name.size() <= 256
+        && data.lastOpened is number
+        && data.platform is string && (data.platform == 'web' || data.platform == 'desktop' || data.platform == 'mobile')
+        && (!('documentId' in data) || (data.documentId is string && data.documentId.size() <= 128))
+        && (!('pageCount' in data) || data.pageCount is number)
+        && (!('sizeBytes' in data) || data.sizeBytes is number);
+    }
+
+    // Match /users/{userId}
+    match /users/{userId} {
+      allow get: if isOwner(userId);
+      allow create: if isOwner(userId) && isValidUser(incoming()) && incoming().uid == userId;
+      allow update: if isOwner(userId) && isValidUser(incoming())
+        && incoming().uid == existing().uid
+        && incoming().createdAt == existing().createdAt
+        && incoming().diff(existing()).affectedKeys().hasOnly(['displayName', 'photoURL', 'storageUsedBytes', 'updatedAt']);
+      allow delete: if isOwner(userId);
+
+      // Folders
+      match /folders/{folderId} {
+        allow get, list: if isOwner(userId);
+        allow create: if isOwner(userId) && isValidId(folderId) && isValidFolder(incoming(), userId);
+        allow update: if isOwner(userId) && isValidId(folderId) && isValidFolder(incoming(), userId)
+          && incoming().id == existing().id
+          && incoming().userId == existing().userId
+          && incoming().createdAt == existing().createdAt
+          && incoming().diff(existing()).affectedKeys().hasOnly(['name', 'color', 'updatedAt']);
+        allow delete: if isOwner(userId) && isValidId(folderId);
+      }
+
+      // Documents
+      match /documents/{documentId} {
+        allow get, list: if isOwner(userId);
+        allow create: if isOwner(userId) && isValidId(documentId) && isValidDocument(incoming(), userId);
+        allow update: if isOwner(userId) && isValidId(documentId) && isValidDocument(incoming(), userId)
+          && incoming().id == existing().id
+          && incoming().userId == existing().userId
+          && incoming().createdAt == existing().createdAt
+          && incoming().diff(existing()).affectedKeys().hasOnly(['name', 'folderId', 'sizeBytes', 'pageCount', 'storagePath', 'downloadUrl', 'version', 'isEncrypted', 'isSigned', 'tags', 'lastModifiedBy', 'updatedAt']);
+        allow delete: if isOwner(userId) && isValidId(documentId);
+      }
+
+      // Recents
+      match /recents/{recentId} {
+        allow get, list: if isOwner(userId);
+        allow create: if isOwner(userId) && isValidId(recentId) && isValidRecent(incoming(), userId);
+        allow update: if isOwner(userId) && isValidId(recentId) && isValidRecent(incoming(), userId)
+          && incoming().id == existing().id
+          && incoming().userId == existing().userId;
+        allow delete: if isOwner(userId) && isValidId(recentId);
+      }
+    }
+  }
+}

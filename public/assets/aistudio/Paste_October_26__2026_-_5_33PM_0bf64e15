@@ -1,0 +1,1209 @@
+# HHM PDF — COMPLETE MASTER DEVELOPMENT PROMPT
+## Full Adobe Acrobat + Foxit + Nitro Feature Completion
+
+You are acting as a Senior Software Architect, Senior PDF Engine Developer, Full-Stack Engineer, Desktop Application Engineer, Android Engineer, Firebase Security Engineer, QA Engineer, and UI/UX Designer.
+
+Your task is to take my existing **HHM PDF** application and complete all remaining functionality required to make it a professional, fully functional PDF productivity suite comparable to Adobe Acrobat Pro, Foxit PDF Editor, and Nitro PDF Pro.
+
+This is a complete implementation task. Do not divide the work into phases, parts, milestones, or separate future prompts. Do not stop after creating a plan, audit report, mockup, prototype, or partial implementation.
+
+**Inspect the existing repository, identify everything already implemented, preserve working functionality, implement everything missing, integrate all features into the existing application, and run the available tests and builds.**
+
+The final objective is a working HHM PDF application, not a feature list or a demonstration.
+
+---
+
+# 1. EXISTING PROJECT — PRESERVE AND IMPROVE
+
+The existing application has been developed using a combination of:
+
+- React / TypeScript.
+- Existing PDF rendering and editing engine.
+- Existing PDF worker architecture.
+- Electron for Windows desktop.
+- Capacitor for Android.
+- Firebase Authentication.
+- Firebase Firestore.
+- Firebase Storage.
+- Existing cloud document and history functionality.
+- Existing font registry and font management system.
+- Existing PDF export functionality.
+
+The repository may contain additional libraries, services, components, utilities, tests, and architectural decisions.
+
+Before making changes, inspect the actual source code, package.json, dependencies, existing architecture, Firebase configuration, PDF engine, font registry, export services, desktop configuration, Android configuration, and test suite.
+
+The latest reported development includes:
+
+- PDF viewer and editing foundation.
+- Text editing and multiline editing.
+- Font registry and font selection improvements.
+- Existing font preservation logic.
+- Font size controls.
+- Custom font handling.
+- DOCX, XLSX, CSV, and PPTX export workflows.
+- Firebase integration.
+- Electron desktop foundation.
+- Capacitor Android foundation.
+- Existing automated tests.
+
+These are reported features, not permission to assume every implementation is complete or correct.
+
+Verify the actual code.
+
+### Critical instructions
+
+1. Do not rebuild the application from scratch.
+2. Do not replace the existing application with a new unrelated project.
+3. Do not remove existing working features.
+4. Do not change the HHM PDF branding.
+5. Do not rename the project back to Kabeer PDF Studio.
+6. Preserve existing Firebase integration.
+7. Preserve existing user accounts and document history.
+8. Preserve the existing font editing work.
+9. Preserve existing export functionality.
+10. Maintain backward compatibility with existing documents and user data.
+11. Reuse existing libraries and services whenever appropriate.
+12. Avoid unnecessary paid APIs, paid servers, or proprietary dependencies.
+13. Prefer free and open-source solutions wherever practical.
+14. Do not introduce unnecessary subscriptions or usage-based services.
+15. Do not create duplicate features that already work correctly.
+
+If a feature is already implemented, verify it, fix defects if necessary, and integrate it with the rest of the application.
+
+---
+
+# 2. COMPLETE PDF VIEWER AND DOCUMENT WORKSPACE
+
+Make the existing PDF viewer a professional document workspace.
+
+Implement or verify:
+
+- Open PDF files.
+- Multi-document tabs.
+- Multiple PDFs open simultaneously.
+- Page thumbnails.
+- Page navigation.
+- First page / last page.
+- Previous / next page.
+- Direct page number navigation.
+- Zoom in / zoom out.
+- Fit Page.
+- Fit Width.
+- Actual Size.
+- Custom zoom.
+- Full-screen mode.
+- Continuous scrolling.
+- Single-page view.
+- Two-page view.
+- Page rotation.
+- Temporary view rotation.
+- Permanent page rotation.
+- Text selection.
+- Text search.
+- Search all occurrences.
+- Search within multiple documents.
+- Bookmarks.
+- Document outline.
+- Navigation panel.
+- Document properties.
+- PDF metadata.
+- Dark mode.
+- Print preview.
+- Read-only mode.
+- Save.
+- Save As.
+- Autosave.
+- Undo.
+- Redo.
+
+The viewer must work with small PDFs, large PDFs, scanned PDFs, text PDFs, image-based PDFs, and PDFs containing mixed content.
+
+Implement efficient rendering, lazy loading, and memory management where appropriate.
+
+---
+
+# 3. PROFESSIONAL PDF TEXT EDITOR
+
+This is one of the most important requirements.
+
+Complete the existing text editing engine rather than replacing it unnecessarily.
+
+### Text editing
+
+Implement or verify:
+
+- Edit existing PDF text.
+- Add new text.
+- Delete existing text.
+- Replace text.
+- Move text.
+- Resize text boxes.
+- Edit multiline text.
+- Edit paragraphs.
+- Edit individual text blocks.
+- Edit text across multiple lines.
+- Edit text with different fonts.
+- Edit text with different colors.
+- Edit text with different sizes.
+- Edit bold and italic text.
+- Edit underline and strikethrough.
+- Change alignment.
+- Change line spacing.
+- Change character spacing.
+- Change paragraph spacing.
+- Adjust text box width and height.
+- Support text wrapping.
+- Support text overflow.
+- Support paragraph reflow.
+- Preserve the original document layout as much as possible.
+
+### Font management
+
+Complete the font system professionally.
+
+Implement:
+
+- Font family dropdown.
+- Searchable font list.
+- Font family selection.
+- Font size selection.
+- Font color selection.
+- Bold.
+- Italic.
+- Underline.
+- Strikethrough.
+- Alignment.
+- Line spacing.
+- Character spacing.
+- Paragraph formatting.
+- Font preview.
+- Font upload.
+- Font installation or application-level font registration where supported.
+- System font discovery.
+- Custom font discovery.
+- Font registry.
+- Font loading status.
+- Font fallback.
+- Font substitution.
+- Embedded font detection.
+- Font embedding where legally and technically permitted.
+- Unicode font support.
+- Support for multilingual text.
+- Proper right-to-left text handling where supported.
+- Correct font rendering in the editor.
+- Correct font rendering in the saved PDF.
+- Correct font rendering in exported documents.
+
+Supported font formats should include appropriate TTF, OTF, WOFF, and WOFF2 handling according to the actual rendering engine.
+
+Do not display a font name in the dropdown unless the application can actually use that font.
+
+Do not show a font as successfully applied before it has loaded.
+
+Do not silently replace the selected font with a different font.
+
+If a font cannot be embedded or used because of licensing or technical restrictions, explain the limitation in the UI.
+
+### Important font editing requirement
+
+When editing existing text, preserve the original font family, font size, font color, text position, character spacing, line spacing, and style wherever possible.
+
+When adding new text, provide professional default formatting and allow the user to customize it.
+
+Editing one text block must not unintentionally change the formatting of unrelated text blocks.
+
+Fix all existing font editor defects.
+
+---
+
+# 4. COMPLETE IMAGE EDITING
+
+Implement a complete PDF image editing system.
+
+Include:
+
+- Insert image.
+- Replace image.
+- Delete image.
+- Move image.
+- Resize image.
+- Crop image.
+- Rotate image.
+- Flip image.
+- Adjust image positioning.
+- Adjust image opacity where supported.
+- Maintain aspect ratio.
+- Allow free resizing.
+- Image selection handles.
+- Image alignment.
+- Image layering.
+- Bring to front.
+- Send to back.
+- Copy image.
+- Paste image.
+- Support JPG, PNG, WebP, TIFF, and other formats supported by the application.
+- Image-to-PDF conversion.
+- Multiple images to one PDF.
+- Image quality controls.
+- Image compression.
+
+Do not flatten the entire PDF unnecessarily when editing an individual image.
+
+Preserve unrelated text, links, annotations, and document structure.
+
+---
+
+# 5. COMPLETE PAGE MANAGEMENT SYSTEM
+
+Implement all professional page management functionality.
+
+Include:
+
+- Insert pages.
+- Insert blank pages.
+- Insert pages from another PDF.
+- Delete pages.
+- Duplicate pages.
+- Reorder pages.
+- Drag-and-drop page thumbnails.
+- Extract selected pages.
+- Extract page ranges.
+- Replace pages.
+- Move pages between PDFs.
+- Copy pages between PDFs.
+- Merge PDFs.
+- Split PDFs.
+- Split by page count.
+- Split by file size.
+- Split by page ranges.
+- Rotate selected pages.
+- Rotate all pages.
+- Crop pages.
+- Resize pages.
+- Change page dimensions.
+- Page labels.
+- Page numbering.
+- Page range selection.
+- Reverse page order.
+- Remove blank pages.
+- Detect duplicate pages.
+- Organize multiple PDFs.
+- Save organized PDFs as new files.
+
+The page management interface must be intuitive and support drag-and-drop operations.
+
+All page operations must update the document correctly without corrupting the PDF.
+
+---
+
+# 6. COMPLETE PDF CONVERSION ENGINE
+
+Implement a reliable PDF conversion system.
+
+### PDF to other formats
+
+Support:
+
+- PDF to DOCX.
+- PDF to DOC.
+- PDF to XLSX.
+- PDF to XLS.
+- PDF to CSV.
+- PDF to PPTX.
+- PDF to PPT.
+- PDF to TXT.
+- PDF to RTF.
+- PDF to HTML.
+- PDF to JPG.
+- PDF to PNG.
+- PDF to TIFF.
+- PDF to WebP where supported.
+
+### Other formats to PDF
+
+Support:
+
+- DOC.
+- DOCX.
+- XLS.
+- XLSX.
+- CSV.
+- PPT.
+- PPTX.
+- TXT.
+- RTF.
+- JPG.
+- PNG.
+- TIFF.
+- HTML.
+- Images.
+- Supported office documents.
+- Supported web documents.
+
+### Conversion requirements
+
+Preserve, as much as technically possible:
+
+- Text.
+- Fonts.
+- Formatting.
+- Paragraphs.
+- Tables.
+- Images.
+- Page dimensions.
+- Page orientation.
+- Margins.
+- Headers.
+- Footers.
+- Page breaks.
+- Columns.
+- Lists.
+- Links.
+
+Use appropriate conversion engines.
+
+Do not generate fake Word, Excel, or PowerPoint files by simply renaming a PDF or changing its extension.
+
+Validate exported files by opening them with the appropriate parser or library.
+
+If an export format is unsupported by the existing engine, integrate an appropriate free/open-source solution or provide a clearly defined fallback.
+
+---
+
+# 7. COMPLETE OCR SYSTEM
+
+Implement a professional OCR system.
+
+Support:
+
+- OCR for scanned PDFs.
+- OCR for image-based PDFs.
+- OCR for individual pages.
+- OCR for selected pages.
+- OCR for entire documents.
+- Batch OCR.
+- Searchable PDF generation.
+- Editable text generation where supported.
+- Hidden text layers.
+- OCR language selection.
+- Multiple languages.
+- OCR progress.
+- OCR cancellation.
+- OCR error handling.
+- OCR confidence reporting where available.
+- OCR correction.
+- Search after OCR.
+- Copy text after OCR.
+- Preserve original scanned images.
+- Preserve page layout.
+- Detect pages requiring OCR.
+- Avoid duplicate OCR layers.
+
+Include appropriate language packs and provide a clear way to install or select additional languages.
+
+Do not claim OCR is complete if only a placeholder or simulated interface exists.
+
+---
+
+# 8. PDF COMPRESSION AND OPTIMIZATION
+
+Implement professional PDF compression.
+
+Include:
+
+- Basic compression.
+- Advanced optimization.
+- Image compression.
+- Image resolution adjustment.
+- JPEG quality control.
+- Lossless compression where supported.
+- Font optimization.
+- Remove unused objects.
+- Remove duplicate objects.
+- Remove unnecessary metadata.
+- Optimize embedded resources.
+- Optimize PDF structure.
+- Remove unused thumbnails.
+- Compress scanned PDFs.
+- Compress image-heavy PDFs.
+- Preserve document readability.
+
+Provide compression presets:
+
+- High Quality.
+- Balanced.
+- Small Size.
+- Maximum Compression.
+- Custom.
+
+Show:
+
+- Original file size.
+- Compressed file size.
+- Percentage reduction.
+- Compression status.
+- Quality settings.
+
+Never silently destroy document quality.
+
+---
+
+# 9. ANNOTATIONS AND COMMENTS
+
+Implement:
+
+- Highlight.
+- Underline.
+- Strikethrough.
+- Sticky notes.
+- Text comments.
+- Text boxes.
+- Callouts.
+- Freehand drawing.
+- Pencil.
+- Rectangle.
+- Circle.
+- Arrow.
+- Line.
+- Custom shapes where supported.
+- Stamps.
+- Custom stamps.
+- Comment replies.
+- Resolve comments.
+- Delete comments.
+- Edit comments.
+- Comment author.
+- Comment date.
+- Comment filtering.
+- Comment search.
+- Comment summary.
+- Print comments.
+- Export comments.
+- Import comments where supported.
+
+Annotations should remain editable and should not permanently modify the underlying PDF content unless explicitly requested.
+
+---
+
+# 10. FILL & SIGN, PDF FORMS, AND DIGITAL SIGNATURES
+
+Implement a complete forms and signing system.
+
+### Fill & Sign
+
+Include:
+
+- Fill PDF forms.
+- Add text.
+- Add checkmarks.
+- Add cross marks.
+- Add dates.
+- Add initials.
+- Draw signatures.
+- Type signatures.
+- Upload signature images.
+- Save signatures.
+- Reuse saved signatures.
+- Move signatures.
+- Resize signatures.
+- Delete signatures.
+
+### PDF form creation
+
+Include:
+
+- Text fields.
+- Checkboxes.
+- Radio buttons.
+- Dropdown lists.
+- List boxes.
+- Date fields.
+- Signature fields.
+- Required fields.
+- Field validation.
+- Calculated fields.
+- Field properties.
+- Field alignment.
+- Tab order.
+- Form preview.
+- Form data import.
+- Form data export.
+- Reset form.
+- Submit form where supported.
+
+### Digital signatures
+
+Implement certificate-based digital signature support where technically feasible.
+
+Include:
+
+- Sign PDF using a certificate.
+- Verify signatures.
+- Verify document integrity.
+- Verify certificate chain.
+- Show signer identity.
+- Show signing time.
+- Detect document modifications after signing.
+- Certificate inspection.
+- Signature validation status.
+- Timestamp support where available.
+- Certify documents where supported.
+
+Do not confuse a simple signature image with a cryptographic digital signature.
+
+Do not claim legal validity without appropriate implementation and validation.
+
+---
+
+# 11. PDF SECURITY
+
+Implement a complete PDF security system.
+
+Include:
+
+- Password to open.
+- Password-based encryption.
+- Editing permissions.
+- Printing permissions.
+- Copying permissions.
+- Commenting permissions.
+- Form filling permissions.
+- Document encryption.
+- Certificate-based security where supported.
+- Remove password protection with authorization.
+- Security settings inspection.
+- Password strength validation.
+- Secure document handling.
+
+Use standards-compliant encryption supported by the selected PDF engine.
+
+Do not create fake password protection that merely hides a document behind a UI password screen.
+
+---
+
+# 12. PERMANENT REDACTION AND DOCUMENT SANITIZATION
+
+Implement secure redaction.
+
+Include:
+
+- Redact selected text.
+- Redact selected areas.
+- Redact images.
+- Search and redact sensitive information.
+- Redact multiple occurrences.
+- Redact page ranges.
+- Remove underlying text.
+- Remove underlying image content.
+- Remove associated hidden content.
+- Remove sensitive metadata.
+- Sanitize PDF.
+- Remove hidden layers where appropriate.
+- Remove embedded sensitive attachments where requested.
+- Verify that redacted text cannot be copied or recovered.
+
+Redaction must permanently remove the underlying content.
+
+A black rectangle placed over text is NOT acceptable redaction.
+
+Test redaction by reopening the output PDF, searching for the removed text, copying text, inspecting extracted content, and checking the underlying document objects where possible.
+
+---
+
+# 13. WATERMARKS, HEADERS, FOOTERS, AND PAGE NUMBERING
+
+Implement:
+
+- Text watermark.
+- Image watermark.
+- Custom watermark.
+- Watermark opacity.
+- Watermark rotation.
+- Watermark position.
+- Watermark size.
+- Watermark color.
+- Watermark on selected pages.
+- Watermark on all pages.
+- Remove watermark where technically possible.
+- Header.
+- Footer.
+- Page number.
+- Document title.
+- Date.
+- Custom text.
+- Page numbering formats.
+- Bates numbering.
+- Bates numbering prefixes.
+- Bates numbering suffixes.
+- Sequential numbering.
+- Multiple document numbering workflows.
+
+Provide a live preview before applying changes.
+
+---
+
+# 14. DOCUMENT COMPARISON
+
+Implement professional PDF comparison.
+
+Include:
+
+- Compare two PDFs.
+- Compare different versions of a document.
+- Detect added text.
+- Detect deleted text.
+- Detect changed text.
+- Detect formatting changes.
+- Detect image changes.
+- Detect page additions.
+- Detect page deletions.
+- Detect page order changes.
+- Highlight differences.
+- Side-by-side comparison.
+- Comparison summary.
+- Export comparison report.
+
+Use accurate comparison logic rather than simply comparing file hashes.
+
+---
+
+# 15. METADATA AND DOCUMENT PROPERTIES
+
+Implement:
+
+- Document title.
+- Author.
+- Subject.
+- Keywords.
+- Creator.
+- Producer.
+- Creation date.
+- Modification date.
+- PDF version.
+- Page count.
+- Page dimensions.
+- Font information.
+- Embedded font information.
+- Image information.
+- File size.
+- Metadata editing.
+- Metadata cleanup.
+- Remove sensitive metadata.
+- Inspect document properties.
+
+---
+
+# 16. PRINTING AND BATCH PROCESSING
+
+Implement:
+
+- Print PDF.
+- Print selected pages.
+- Print page ranges.
+- Multiple copies.
+- Paper size.
+- Portrait / landscape.
+- Fit to page.
+- Actual size.
+- Custom scaling.
+- Duplex printing where supported.
+- Multiple pages per sheet.
+- Booklet printing where supported.
+- Print annotations.
+- Print form fields.
+- Print preview.
+
+Implement batch workflows for:
+
+- Batch conversion.
+- Batch OCR.
+- Batch compression.
+- Batch watermarking.
+- Batch document protection.
+- Batch metadata cleanup.
+- Batch renaming.
+- Batch page processing.
+- Batch optimization.
+
+Provide progress, cancellation, error reporting, and individual file results.
+
+---
+
+# 17. ADVANCED PDF FEATURES
+
+Implement advanced professional PDF capabilities where supported by the existing engine or suitable open-source libraries.
+
+Include:
+
+- PDF/A support.
+- PDF/X support.
+- PDF/UA accessibility support.
+- Accessibility checker.
+- Document tagging.
+- Reading order.
+- Alt text.
+- Heading structure.
+- Table accessibility.
+- Accessible forms.
+- PDF Portfolio.
+- Embedded attachments.
+- Document JavaScript inspection.
+- PDF Preflight.
+- Print-production checks.
+- Color inspection.
+- Output preview.
+- Transparency inspection.
+- Font inspection.
+- Document structure inspection.
+
+If full compliance with a PDF standard cannot be achieved using the existing architecture, implement the supported functionality accurately and clearly identify the unsupported portion.
+
+Do not falsely label a document PDF/A, PDF/X, or PDF/UA compliant.
+
+---
+
+# 18. AI PDF ASSISTANT
+
+Implement a useful AI-powered document assistant.
+
+The AI Assistant should include:
+
+- Ask questions about a PDF.
+- Summarize a PDF.
+- Summarize selected pages.
+- Summarize multiple documents.
+- Extract important information.
+- Extract dates.
+- Extract names.
+- Extract amounts.
+- Extract tables where supported.
+- Identify key points.
+- Explain difficult content.
+- Translate document text.
+- Rewrite selected text.
+- Improve writing.
+- Simplify writing.
+- Shorten text.
+- Expand text.
+- Generate document summaries.
+- Generate structured outputs.
+- Provide source references.
+- Cite page numbers.
+- Show the source text supporting answers.
+- Allow users to open the cited page.
+
+### AI provider architecture
+
+Use a modular provider architecture so that users can configure supported AI services.
+
+Potential providers include:
+
+- OpenAI.
+- Gemini.
+- Claude.
+- Groq.
+- OpenRouter.
+- DeepSeek.
+- Other compatible providers.
+
+Do not hardcode private API keys into the frontend, desktop application, or Android application.
+
+Allow users to configure their own API keys securely where appropriate.
+
+Use free or low-cost options where available.
+
+Do not require an expensive paid AI subscription for the entire application to function.
+
+If AI is unavailable, the PDF editor must continue working normally.
+
+Do not send user documents to external AI providers without clear user consent.
+
+---
+
+# 19. FIREBASE, CLOUD STORAGE, USER ACCOUNTS, AND HISTORY
+
+Preserve and complete the existing Firebase architecture.
+
+Implement and verify:
+
+- Firebase Authentication.
+- User-specific documents.
+- User-specific history.
+- User-specific cloud storage.
+- User-specific settings.
+- User-specific fonts where appropriate.
+- User-specific recent files.
+- Cloud synchronization.
+- Account switching.
+- Logout.
+- Login.
+- Document deletion.
+- Document restoration where supported.
+- Secure document sharing.
+- Storage access controls.
+- Firestore security rules.
+- Firebase Storage security rules.
+- Offline document access where appropriate.
+- Conflict resolution.
+- Sync status.
+- Error recovery.
+
+### Critical account isolation requirement
+
+User A must never see User B's documents, history, settings, or private files.
+
+Implement server-side security rules, not only frontend filtering.
+
+Test:
+
+- Two different accounts.
+- Two different devices.
+- Account switching.
+- Logout and login.
+- Cached document data.
+- Cloud history.
+- Firestore access.
+- Firebase Storage access.
+- Direct document URL access.
+- Unauthorized access attempts.
+
+After logout, clear sensitive account-specific cached data.
+
+Do not delete existing user data or migrate it destructively.
+
+---
+
+# 20. WEB, WINDOWS DESKTOP, AND ANDROID
+
+Maintain the existing cross-platform architecture.
+
+### Web
+
+Implement and verify:
+
+- Production-ready web build.
+- Responsive interface.
+- Browser PDF viewing.
+- Browser editing where supported.
+- File upload.
+- File download.
+- Cloud documents.
+- Authentication.
+- User history.
+- Secure storage.
+- Error handling.
+- Browser compatibility.
+
+### Windows Desktop
+
+Complete the Electron application.
+
+Implement:
+
+- Windows application packaging.
+- Windows installer.
+- Portable build where practical.
+- Desktop file access.
+- Open with HHM PDF.
+- File associations where appropriate.
+- Save dialogs.
+- Native menus.
+- Keyboard shortcuts.
+- Desktop printing.
+- Desktop font access.
+- Offline functionality where supported.
+- Auto-update architecture where appropriate.
+- Application icons.
+- Version information.
+- Installer configuration.
+
+Generate a working Windows EXE or installer if the environment supports it.
+
+### Android
+
+Complete the existing Capacitor application.
+
+Implement:
+
+- Android application packaging.
+- APK generation.
+- AAB generation.
+- Android file picker.
+- PDF import.
+- PDF export.
+- Storage permissions.
+- Android sharing.
+- Android printing where supported.
+- Touch-friendly interface.
+- Mobile page navigation.
+- Mobile text editing.
+- Mobile signing.
+- Firebase authentication.
+- User-specific history.
+- Offline functionality where supported.
+- App icons.
+- Splash screen.
+- Application versioning.
+- Release signing configuration.
+
+Generate an APK/AAB if the available environment supports it.
+
+Do not claim that an APK or EXE was generated unless the file actually exists and has been verified.
+
+If the current environment lacks a required SDK or build tool, identify the exact missing dependency and provide the correct build configuration and command.
+
+---
+
+# 21. PROFESSIONAL UI/UX
+
+Improve the existing HHM PDF interface without destroying the current design.
+
+Use a clean, modern, professional PDF editor interface inspired by Adobe Acrobat, Foxit, and Nitro.
+
+Include:
+
+- Professional toolbar.
+- Organized tool categories.
+- Consistent icons.
+- Searchable tool menu.
+- Contextual editing toolbar.
+- Properties panel.
+- Font properties panel.
+- Image properties panel.
+- Page thumbnails.
+- Document tabs.
+- Recent files.
+- File management.
+- Drag-and-drop.
+- Keyboard shortcuts.
+- Context menus.
+- Loading indicators.
+- Progress bars.
+- Success messages.
+- Error messages.
+- Empty states.
+- Confirmation dialogs.
+- Responsive design.
+- Accessible controls.
+- Consistent typography.
+- Consistent spacing.
+- Dark mode.
+- Light mode.
+
+Do not create an overcrowded interface.
+
+Do not leave any button or toolbar item that has no actual functionality.
+
+Every visible action must work.
+
+---
+
+# 22. TESTING AND QUALITY ASSURANCE
+
+Do not stop after implementing the code.
+
+Run the existing test suite and add missing tests.
+
+Test the application with:
+
+- Simple text PDFs.
+- Complex text PDFs.
+- Scanned PDFs.
+- Image-heavy PDFs.
+- Multi-page PDFs.
+- Large PDFs.
+- PDFs with embedded fonts.
+- PDFs with missing fonts.
+- PDFs with multilingual text.
+- PDFs with tables.
+- PDFs with forms.
+- PDFs with annotations.
+- PDFs with digital signatures.
+- Password-protected PDFs.
+- Corrupted PDFs.
+- PDFs with mixed page sizes.
+
+### Functional testing
+
+Test:
+
+- Text editing.
+- Font changes.
+- Font rendering.
+- Image editing.
+- Page management.
+- Merge.
+- Split.
+- Extraction.
+- Conversion.
+- OCR.
+- Compression.
+- Forms.
+- Signing.
+- Security.
+- Redaction.
+- Cloud storage.
+- Account isolation.
+- Export.
+- Save.
+- Reopen.
+- Undo.
+- Redo.
+
+### Regression testing
+
+Ensure existing features continue working.
+
+Do not remove or weaken existing tests just to make the test suite pass.
+
+Do not replace real tests with mocked success responses.
+
+Do not hide errors.
+
+Do not report success if a test failed.
+
+---
+
+# 23. PERFORMANCE AND STABILITY
+
+Improve:
+
+- Large PDF rendering.
+- Memory usage.
+- Worker performance.
+- File loading.
+- Document saving.
+- Export performance.
+- OCR performance.
+- Image processing.
+- Cloud synchronization.
+- UI responsiveness.
+- Background processing.
+- Error recovery.
+
+Use workers or background processing where appropriate.
+
+Avoid unnecessary full-document re-rendering.
+
+Avoid loading all pages into memory simultaneously when not required.
+
+Prevent application crashes caused by large files or unsupported content.
+
+---
+
+# 24. CODE QUALITY AND ARCHITECTURE
+
+Maintain a professional codebase.
+
+Requirements:
+
+- TypeScript safety.
+- Proper error handling.
+- Reusable components.
+- Modular services.
+- Clean architecture.
+- No unnecessary duplication.
+- No dead code.
+- No unused dependencies.
+- No unnecessary dependencies.
+- No insecure API key handling.
+- No hardcoded private credentials.
+- No fake implementations.
+- No placeholder functionality.
+- No simulated success messages.
+- No empty buttons.
+- No broken imports.
+- No unresolved TypeScript errors.
+- No unresolved lint errors.
+
+Preserve the existing application structure wherever practical.
+
+Use appropriate open-source libraries and respect their licenses.
+
+Do not introduce a new PDF engine unless the current engine cannot support a required feature and a migration is genuinely necessary.
+
+---
+
+# 25. FINAL EXECUTION REQUIREMENTS
+
+This is a single comprehensive development assignment.
+
+Do not provide only a plan.
+
+Do not divide the implementation into phases.
+
+Do not ask me to submit another prompt for the next feature.
+
+Do not stop after the first set of features.
+
+Do not create a separate demonstration application.
+
+Do not claim that every feature is complete if it has not been implemented and tested.
+
+Proceed with the following execution behavior:
+
+1. Inspect the complete existing repository.
+2. Identify all implemented, partially implemented, and missing functionality.
+3. Preserve all working features.
+4. Implement the missing functionality.
+5. Fix existing defects.
+6. Integrate the new features into the current application.
+7. Update dependencies only when necessary.
+8. Add appropriate tests.
+9. Run the complete available test suite.
+10. Run TypeScript checks.
+11. Run lint.
+12. Run production builds.
+13. Verify web, desktop, and Android configurations.
+14. Fix all issues that can be fixed in the current environment.
+15. Verify the final application.
+16. Provide an accurate completion report.
+
+If a required feature cannot be fully implemented because of a genuine technical limitation, explain the exact limitation and implement the best working alternative.
+
+Do not silently skip requirements.
+
+Do not fabricate completed work.
+
+Do not leave a feature as a placeholder.
+
+Do not stop for approval between tasks.
+
+Make sensible technical decisions independently and continue until the complete available scope has been implemented and verified.
+
+---
+
+# FINAL DELIVERABLE
+
+The final deliverable must be the existing HHM PDF application with all implemented functionality integrated into the actual project.
+
+At completion, provide:
+
+- Summary of implemented features.
+- Summary of fixed bugs.
+- Summary of improved existing features.
+- Summary of remaining technical limitations, if any.
+- Test results.
+- Build results.
+- Web build status.
+- Windows EXE/installer status.
+- Android APK/AAB status.
+- Firebase security verification status.
+- List of modified files.
+- Exact commands required to run the application.
+- Exact commands required to build the application.
+- Any required environment variables.
+- Any required external services.
+- Any required manual configuration.
+
+The final report must distinguish between:
+
+- Implemented and tested.
+- Implemented but not fully tested.
+- Blocked by the environment.
+- Not implemented.
+
+**The final objective is to transform the existing HHM PDF project into a professional, fully functional, cross-platform PDF productivity suite comparable to Adobe Acrobat Pro, Foxit PDF Editor, and Nitro PDF Pro, while preserving the existing project, branding, Firebase integration, font system, and working features.**
+
+Start inspecting the existing repository and execute the complete implementation now.

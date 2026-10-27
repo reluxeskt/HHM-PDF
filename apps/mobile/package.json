@@ -1,0 +1,32 @@
+{
+  "name": "hhm-pdf-mobile",
+  "version": "1.0.0",
+  "description": "HHM PDF Native Mobile Application for Android & iOS",
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "build:android": "eas build --platform android --profile preview"
+  },
+  "dependencies": {
+    "expo": "~52.0.0",
+    "expo-status-bar": "~2.0.0",
+    "expo-camera": "~16.0.0",
+    "expo-image-picker": "~16.0.0",
+    "expo-file-system": "~18.0.0",
+    "expo-sharing": "~13.0.0",
+    "expo-document-picker": "~13.0.0",
+    "pdf-lib": "^1.17.1",
+    "react": "18.3.1",
+    "react-native": "0.76.5",
+    "react-native-svg": "15.8.0",
+    "lucide-react-native": "^0.475.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.0",
+    "@types/react": "~18.3.12",
+    "typescript": "^5.3.3"
+  },
+  "private": true
+}

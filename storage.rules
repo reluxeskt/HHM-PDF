@@ -1,0 +1,23 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Default deny
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+
+    // User PDF document directory
+    match /users/{userId}/{allPaths=**} {
+      // Only authenticated owner can read their own documents
+      allow read: if request.auth != null && request.auth.uid == userId;
+
+      // Only authenticated owner can upload, with strict MIME type and size checks
+      allow write: if request.auth != null && request.auth.uid == userId
+        && request.resource.size <= 26214400 // max 25MB Spark free tier limit
+        && (request.resource.contentType == 'application/pdf' || request.resource.contentType.matches('image/.*'));
+
+      // Only authenticated owner can delete
+      allow delete: if request.auth != null && request.auth.uid == userId;
+    }
+  }
+}

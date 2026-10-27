@@ -1,0 +1,38 @@
+{
+  "expo": {
+    "name": "HHM PDF",
+    "slug": "hhm-pdf",
+    "version": "1.0.0",
+    "orientation": "default",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0b2545"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.hhm.pdf",
+      "infoPlist": {
+        "NSCameraUsageDescription": "HHM PDF requires camera access to scan documents directly to PDF.",
+        "NSPhotoLibraryUsageDescription": "HHM PDF needs photo access to convert images to PDF documents."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#0b2545"
+      },
+      "package": "com.hhm.pdf",
+      "permissions": [
+        "CAMERA",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
+  }
+}

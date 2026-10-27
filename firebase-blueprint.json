@@ -1,0 +1,91 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "Authenticated user profile and storage statistics",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "maxLength": 128 },
+        "email": { "type": "string", "maxLength": 256 },
+        "displayName": { "type": "string", "maxLength": 100 },
+        "photoURL": { "type": "string", "maxLength": 1024 },
+        "storageUsedBytes": { "type": "number" },
+        "storageQuotaBytes": { "type": "number" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email", "createdAt", "updatedAt"]
+    },
+    "Folder": {
+      "title": "Document Folder",
+      "description": "Directory folder for organizing user PDF documents",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "color": { "type": "string", "maxLength": 32 },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "name", "createdAt", "updatedAt"]
+    },
+    "CloudDocument": {
+      "title": "Cloud PDF Document",
+      "description": "Metadata and storage reference for a cloud-synchronized PDF document",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "folderId": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "minLength": 1, "maxLength": 256 },
+        "sizeBytes": { "type": "number" },
+        "pageCount": { "type": "number" },
+        "storagePath": { "type": "string", "maxLength": 512 },
+        "downloadUrl": { "type": "string", "maxLength": 2048 },
+        "version": { "type": "number" },
+        "isEncrypted": { "type": "boolean" },
+        "isSigned": { "type": "boolean" },
+        "tags": { "type": "string", "maxLength": 500 },
+        "lastModifiedBy": { "type": "string", "maxLength": 128 },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "name", "sizeBytes", "pageCount", "storagePath", "version", "createdAt", "updatedAt"]
+    },
+    "RecentFileRecord": {
+      "title": "Recent File Record",
+      "description": "Cross-device synchronized recent document entry",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "documentId": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 256 },
+        "pageCount": { "type": "number" },
+        "sizeBytes": { "type": "number" },
+        "lastOpened": { "type": "number" },
+        "platform": { "type": "string", "enum": ["web", "desktop", "mobile"] }
+      },
+      "required": ["id", "userId", "name", "lastOpened", "platform"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/User" },
+      "description": "User profile with private settings and storage usage"
+    },
+    "/users/{userId}/folders/{folderId}": {
+      "schema": { "$ref": "#/entities/Folder" },
+      "description": "User custom folders for grouping PDF documents"
+    },
+    "/users/{userId}/documents/{documentId}": {
+      "schema": { "$ref": "#/entities/CloudDocument" },
+      "description": "User PDF documents metadata with cloud storage references"
+    },
+    "/users/{userId}/recents/{recentId}": {
+      "schema": { "$ref": "#/entities/RecentFileRecord" },
+      "description": "User recent files synchronized across web, desktop, and mobile"
+    }
+  }
+}

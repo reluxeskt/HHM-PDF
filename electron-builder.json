@@ -1,0 +1,38 @@
+{
+  "appId": "com.hhm.pdf",
+  "productName": "HHM PDF",
+  "copyright": "Copyright © 2026 HHM Technologies",
+  "electronVersion": "33.2.1",
+  "directories": {
+    "output": "release"
+  },
+  "files": [
+    "dist/**/*",
+    "electron/**/*",
+    "package.json"
+  ],
+  "win": {
+    "icon": "public/icon.ico",
+    "target": [
+      {
+        "target": "nsis",
+        "arch": ["x64"]
+      }
+    ],
+    "fileAssociations": [
+      {
+        "ext": "pdf",
+        "name": "PDF Document",
+        "description": "Portable Document Format",
+        "role": "Editor"
+      }
+    ]
+  },
+  "nsis": {
+    "oneClick": false,
+    "allowToChangeInstallationDirectory": true,
+    "createDesktopShortcut": true,
+    "createStartMenuShortcut": true,
+    "shortcutName": "HHM PDF"
+  }
+}
